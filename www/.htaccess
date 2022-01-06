@@ -1,0 +1,62 @@
+# Zugzwang Project
+# Apache configuration
+#
+# http://www.zugzwang.org/projects/zzproject
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2004-2012 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+
+# Turn RewriteEngine On
+# RewriteEngine anschalten
+RewriteEngine On
+RewriteBase /
+
+# FastCGI does not set PHP_AUTH_USER and PHP_AUTH_PASSWORD
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# If something exists under a URL, serve that
+# Falls etwas unter einer URL existiert, liefere das aus
+RewriteCond %{REQUEST_FILENAME}/index.html -f [OR]
+RewriteCond %{REQUEST_FILENAME}/index.php -f [OR]
+RewriteCond %{REQUEST_FILENAME}/index.htm -f [OR]
+RewriteCond %{REQUEST_FILENAME}/index.var -f [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [L]
+
+# Optional: add URLs here which also exist
+# Optional: hier URLs angeben, die ebenfalls existieren
+#RewriteCond %{REQUEST_FILENAME} ^someurl.*$
+#RewriteRule .* - [L]
+
+# Send all remaining URLs to the CMS
+# Alle uebrigen URLs bitte zum CMS 
+RewriteRule ^$ _scripts/main.php [QSA]
+RewriteRule ^.* _scripts/main.php [QSA]
+
+# Error pages
+# Fehlerseiten
+ErrorDocument 404 /_scripts/main.php?code=404
+ErrorDocument 403 /_scripts/main.php?code=403
+ErrorDocument 410 /_scripts/main.php?code=410
+ErrorDocument 500 /_scripts/main.php?code=500
+ErrorDocument 503 /_scripts/main.php?code=503
+
+# Don't allow access to SQL database files
+# Direkten Zugriff auf SQL-Datenbankdateien unterbinden
+<Files *.sql>
+deny from all
+</Files>
+
+# Don't allow access to PHP includes
+# Direkten Zugriff auf PHP-Includes unterbinden
+<Files *.inc.php>
+deny from all
+</Files>
+
+<filesMatch ".(css|js|png|woff|woff2|ico)$">
+	Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+
+AddType font/woff .woff
+AddType font/woff2 .woff2 

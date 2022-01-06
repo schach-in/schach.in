@@ -1,0 +1,18 @@
+[submodule "_inc/library/zzwrap"]
+	path = _inc/library/zzwrap
+	url = git@github.com:koenige/zzwrap
+[submodule "_inc/library/zzbrick"]
+	path = _inc/library/zzbrick
+	url = git@github.com:koenige/zzbrick
+[submodule "_inc/modules/default"]
+	path = _inc/modules/default
+	url = git@github.com:koenige/modules-default
+[submodule "_inc/modules/clubs"]
+	path = _inc/modules/clubs
+	url = git@github.com:koenige/modules-clubs
+[submodule "_inc/modules/contacts"]
+	path = _inc/modules/contacts
+	url = git@github.com:koenige/modules-contacts
+[submodule "_inc/library/markdown-extra"]
+	path = _inc/library/markdown-extra
+	url = git@github.com:michelf/php-markdown
