@@ -11,3 +11,7 @@ _logs/
 _temp/sessions/*
 !_temp/sessions/README.md
 _temp/*
+
+# config files
+_inc/config.json
+_inc/custom/zzwrap_sql/pwd.json
