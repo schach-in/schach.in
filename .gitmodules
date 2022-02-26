@@ -16,3 +16,6 @@
 [submodule "_inc/library/markdown-extra"]
 	path = _inc/library/markdown-extra
 	url = git@github.com:michelf/php-markdown
+[submodule "_inc/modules/zzform"]
+	path = _inc/modules/zzform
+	url = git@github.com:koenige/zzform
