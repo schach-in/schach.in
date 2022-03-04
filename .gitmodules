@@ -19,3 +19,15 @@
 [submodule "_inc/modules/zzform"]
 	path = _inc/modules/zzform
 	url = git@github.com:koenige/zzform
+[submodule "_inc/themes/schachin"]
+	path = _inc/themes/schachin
+	url = git@github.com:koenige/themes-schachin
+[submodule "www/_behaviour/leaflet-markercluster"]
+	path = www/_behaviour/leaflet-markercluster
+	url = git@github.com:Leaflet/Leaflet.markercluster
+[submodule "www/_behaviour/leaflet"]
+	path = www/_behaviour/leaflet
+	url = git@github.com:Leaflet/Leaflet
+[submodule "www/_behaviour/leaflet.fullscreen"]
+	path = www/_behaviour/leaflet.fullscreen
+	url = git@github.com:brunob/leaflet.fullscreen
