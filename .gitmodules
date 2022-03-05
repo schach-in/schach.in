@@ -31,3 +31,9 @@
 [submodule "www/_behaviour/leaflet.fullscreen"]
 	path = www/_behaviour/leaflet.fullscreen
 	url = git@github.com:brunob/leaflet.fullscreen
+[submodule "www/_behaviour/pagedown"]
+	path = www/_behaviour/pagedown
+	url = git@github.com:StackExchange/pagedown
+[submodule "www/_behaviour/vxjs"]
+	path = www/_behaviour/vxjs
+	url = git@github.com:Vectrex/vxJS.git
