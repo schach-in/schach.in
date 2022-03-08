@@ -37,3 +37,6 @@
 [submodule "www/_behaviour/vxjs"]
 	path = www/_behaviour/vxjs
 	url = git@github.com:Vectrex/vxJS.git
+[submodule "_inc/modules/feedback"]
+	path = _inc/modules/feedback
+	url = git@github.com:koenige/modules-feedback
