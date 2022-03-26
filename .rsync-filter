@@ -1,0 +1,12 @@
+- /_backup/*
+- /_cache/*
+- .DS_Store
+- .git
+- .gitmodules
+- .gitignore
+- .github
+- .rsync-filter
+- /_logs/*
+- /_temp/*
+- /docs/*
+- /_inc/config.inc.php
