@@ -1,7 +1,13 @@
 /**
- * Zugzwang Project
- * Copyright (c) 2022 Gustaf Mossakowski <gustaf@koenige.org>
- * System SQL queries
+ * schach.in website
+ * system SQL queries
+ *
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/projects/schach.in
+ *
+ * @author Gustaf Mossakowski <gustaf@koenige.org>
+ * @copyright Copyright © 2022 Gustaf Mossakowski
+ * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
