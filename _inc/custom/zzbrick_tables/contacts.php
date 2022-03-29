@@ -62,7 +62,7 @@ $zz['fields'][18]['display_field'] = 'country_code';
 $zz['fields'][18]['exclude_from_search'] = true;
 $zz['fields'][18]['character_set'] = 'latin1';
 $zz['fields'][18]['show_hierarchy'] = 'main_country_id';
-$zz['fields'][18]['show_hierarchy_subtree'] = $zz_setting['country_ids']['de'];
+$zz['fields'][18]['show_hierarchy_subtree'] = wrap_id('countries', 'DE');
 $zz['fields'][18]['hide_in_list_if_empty'] = true;
 $zz['fields'][18]['field_sequence'] = 37;
 
