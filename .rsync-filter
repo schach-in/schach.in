@@ -6,7 +6,9 @@
 - .gitignore
 - .github
 - .rsync-filter
+- .rsync-remote
 - /_logs/*
 - /_temp/*
 - /docs/*
 - /_inc/config.inc.php
+- /_inc/config.json
