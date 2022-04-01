@@ -13,14 +13,18 @@ Germany.
   * default module, <https://github.com/koenige/modules-default>
   * clubs module, <https://github.com/koenige/modules-clubs>
   * contacts module, <https://github.com/koenige/modules-contacts>
+  * feedback module, <https://github.com/koenige/modules-feedback>
   * zzform module, <https://github.com/koenige/zzform>
 * CMS Themes
   * schachin Theme, <https://github.com/koenige/themes-schachin>
-* Markdown, <https://github.com/michelf/php-markdown>
+* Markdown
+  * PHP Markdown, <https://github.com/michelf/php-markdown>
+  * Pagedown Markdown editor and converter, <https://github.com/StackExchange/pagedown>
 * Leaflet (JavaScript Map Library)
   * Leaflet <https://github.com/Leaflet/Leaflet>
   * Leaflet.markercluster <https://github.com/Leaflet/Leaflet.markercluster>
   * Leaflet.Control.FullScreen <https://github.com/brunob/leaflet.fullscreen>
+* vxJS JavaScript Library, <https://github.com/Vectrex/vxJS>
 
 ## Support
 
