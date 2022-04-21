@@ -40,3 +40,6 @@
 [submodule "_inc/modules/feedback"]
 	path = _inc/modules/feedback
 	url = git@github.com:koenige/modules-feedback
+[submodule "_inc/library/phpmailer"]
+	path = _inc/library/phpmailer
+	url = git@github.com:PHPMailer/PHPMailer
