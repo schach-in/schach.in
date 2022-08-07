@@ -13,23 +13,12 @@
  */
 
 
+if (!isset($values['relations']))
+	$values['relations_restrict_to'] = 'organisations';
 $values['contactdetails_restrict_to'] = 'organisations';
-$zz = zzform_include_table('contacts', $values);
+$zz = zzform_include_table('contacts/contacts', $values);
 
 $zz['title'] = 'Organisationen';
-
-// contact_category_id
-$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
-		, IF(parameters LIKE "%%&has_place_contact=1%%", 1, NULL) AS has_place_contact
-		, IF(parameters LIKE "%%&has_place_contact=1%%", NULL, 1) AS has_address
-	FROM /*_PREFIX_*/categories
-	WHERE main_category_id = %d
-	ORDER BY sequence, category',
-	wrap_category_id('contact')
-);
-$zz['fields'][4]['sql_ignore'] = ['has_place_contact', 'has_address'];
-$zz['fields'][4]['dependent_fields'][76]['if_selected'] = 'has_place_contact';
-$zz['fields'][4]['dependent_fields'][5]['if_selected'] = 'has_address';
 
 // contact
 $zz['fields'][2]['title'] = 'Name';
@@ -39,6 +28,7 @@ $zz['fields'][2]['link'] = [
 	'field1' => 'identifier',
 	'string2' => '/'
 ];
+$zz['fields'][2]['field_sequence'] = 31;
 
 // contact_short
 $zz['fields'][10]['title'] = 'Name, kurz';
@@ -56,16 +46,125 @@ $zz['fields'][3]['conf_identifier']['concat'] = '-';
 $zz['fields'][3]['conf_identifier']['remove_strings'] = [' e.V.', ' e. V.', ' e. V.', ' eV.', ' eV'];
 $zz['fields'][3]['field_sequence'] = 44;
 
+// contact_category_id
 $zz['fields'][4]['title'] = 'Typ';
 //$zz['fields'][4]['id_field_name'] = 'category_id';
 //$zz['fields'][4]['character_set'] = 'utf8';
 $zz['fields'][4]['hide_in_list'] = true;
 $zz['fields'][4]['field_sequence'] = 1;
+$zz['fields'][4]['exclude_from_search'] = true;
+$zz['fields'][4]['sql'] = sprintf('SELECT category_id, category
+		, IF(parameters LIKE "%%&has_place_contact=1%%", 1, NULL) AS has_place_contact
+		, IF(parameters LIKE "%%&has_place_contact=1%%", NULL, 1) AS has_address
+	FROM /*_PREFIX_*/categories
+	WHERE main_category_id = %d
+	ORDER BY sequence, category',
+	wrap_category_id('contact')
+);
+$zz['fields'][4]['sql_ignore'] = ['has_place_contact', 'has_address'];
+$zz['fields'][4]['dependent_fields'][61]['if_selected'] = 'has_place_contact';
+$zz['fields'][4]['dependent_fields'][5]['if_selected'] = 'has_address';
+
+$zz['fields'][8]['field_sequence'] = 50;
 
 // remarks
 $zz['fields'][13]['rows'] = 6;
+$zz['fields'][13]['field_sequence'] = 75; // remarks
+$zz['fields'][13]['title_desc'] = '(intern)';
 
 $zz['fields'][12]['field_sequence'] = 36; // description
+
+$zz['fields'][16]['title_append'] = 'Gründung – Auflösung';
+$zz['fields'][16]['title'] = 'Gründung o. ä.';
+$zz['fields'][16]['append_next'] = true;
+$zz['fields'][16]['field_sequence'] = 69;
+
+$zz['fields'][17]['title'] = 'Auflösung o. ä.';
+$zz['fields'][17]['prefix'] = ' – ';
+$zz['fields'][17]['field_sequence'] = 70;
+
+$zz['fields'][18]['title'] = 'Politische Einheit';
+$zz['fields'][18]['title_tab'] = 'Pol. Einh.';
+$zz['fields'][18]['sql'] = 'SELECT country_id, country, main_country_id
+	FROM countries
+	ORDER BY country_code3';
+$zz['fields'][18]['display_field'] = 'country_code';
+$zz['fields'][18]['exclude_from_search'] = true;
+$zz['fields'][18]['character_set'] = 'latin1';
+$zz['fields'][18]['show_hierarchy'] = 'main_country_id';
+$zz['fields'][18]['show_hierarchy_subtree'] = wrap_id('countries', 'DE');
+$zz['fields'][18]['hide_in_list_if_empty'] = true;
+$zz['fields'][18]['field_sequence'] = 38;
+
+// contacts_contacts
+for ($i = 60; $i <= 70; $i++) {
+	if (empty($zz['fields'][$i])) continue;
+	switch ($zz['fields'][$i]['fields'][4]['value']) {
+	case wrap_category_id('relation/successor'):
+		$zz['fields'][$i]['field_sequence'] = 71;
+		$zz['fields'][$i]['fields'][3]['sql'] = 'SELECT contacts.contact_id, contact
+				, contacts_identifiers.identifier AS zps_code
+			FROM contacts
+			LEFT JOIN contacts_identifiers
+				ON contacts_identifiers.contact_id = contacts.contact_id
+				AND contacts_identifiers.current = "yes"
+			ORDER BY contacts_identifiers.identifier, contact_abbr';
+		$zz['fields'][$i]['fields'][3]['id_field_name'] = 'contacts.contact_id';
+		break;
+	case wrap_category_id('relation/spielort'):
+		$zz['fields'][$i]['field_sequence'] = 39;
+		$zz['fields'][$i]['fields'][2]['add_details'] = '/intern/orte/';
+		$zz['fields'][$i]['fields'][2]['sql'] = wrap_edit_sql($zz['fields'][$i]['fields'][2]['sql']
+			, 'WHERE', sprintf('contacts.contact_category_id IN (%d, %d, %d, %d)'
+				, wrap_category_id('kontakte/veranstaltungsort')
+				, wrap_category_id('contact/school')
+				, wrap_category_id('contact/kindergarten')
+				, wrap_category_id('contact/hort')
+			)
+		);
+		$zz['fields'][$i]['fields'][2]['suffix'] = '<br>';
+		$zz['fields'][$i]['fields'][2]['placeholder'] = 'Spielort';
+
+		$zz['fields'][$i]['fields'][3]['type'] = 'foreign_key';
+		$zz['fields'][$i]['fields'][3]['key_field_name'] = 'contact_id';
+		$zz['fields'][$i]['fields'][3]['sql'] = 'SELECT contacts.contact_id, contact
+				, contacts_identifiers.identifier AS zps_code
+			FROM contacts
+			LEFT JOIN contacts_identifiers
+				ON contacts_identifiers.contact_id = contacts.contact_id
+				AND contacts_identifiers.current = "yes"
+			ORDER BY contacts_identifiers.identifier, contact_abbr';
+		$zz['fields'][$i]['fields'][3]['id_field_name'] = 'contacts.contact_id';
+
+		$zz['fields'][$i]['fields'][4]['def_val_ignore'] = true;
+
+		$zz['fields'][$i]['fields'][9]['prefix'] = '<span style="width: 4.25em; display: inline-block;"> </span> ';
+		$zz['fields'][$i]['fields'][9]['type'] = 'text';
+		$zz['fields'][$i]['fields'][9]['size'] = 54;
+
+		$zz['fields'][$i]['fields'][6]['prefix'] = '<span style="width: 4.25em; display: inline-block;">';
+		$zz['fields'][$i]['fields'][6]['suffix'] = '</span>';
+
+		$zz['fields'][$i]['subselect']['sql'] = sprintf('SELECT contacts_contacts.main_contact_id, postcode, place
+				, places.contact_id, places.contact
+			FROM contacts_contacts
+			LEFT JOIN contacts places
+				ON contacts_contacts.contact_id = places.contact_id
+			LEFT JOIN addresses
+				ON addresses.contact_id = places.contact_id
+			WHERE contacts_contacts.published = "yes"
+			AND relation_category_id = %d
+			ORDER BY sequence, postcode, place, contact
+		', wrap_category_id('relation/spielort'));
+		$zz['fields'][$i]['subselect']['field_prefix'][2] = ' / <a href="/intern/orte/?edit=';
+		$zz['fields'][$i]['subselect']['field_suffix'][2] = '">';
+		$zz['fields'][$i]['subselect']['field_suffix'][3] = '</a>';
+		$zz['fields'][$i]['hide_in_list'] = false;
+		$zz['fields'][$i]['foreign_key_field_name'] = 'contacts_contacts.main_contact_id';
+		$zz['fields'][$i]['list_append_next'] = true;
+		break;
+	}
+}
 
 // website
 
@@ -77,9 +176,9 @@ for ($i = 30; $i <= 40; $i++) {
 		$zz['fields'][$i]['display_field'] = 'website';
 		$zz['fields'][$i]['list_prefix'] = '<a href="';
 		$zz['fields'][$i]['list_suffix'] = '">www</a>';
+		$zz['fields'][$i]['word_split'] = false;
 		$zz['fields'][$i]['list_no_link'] = true;
 		$zz['fields'][$i]['dont_mark_search_string'] = true;
-		$zz['fields'][$i]['unless']['export_mode']['list_append_next'] = false;
 	}
 	unset($zz['fields'][$i]['subselect']);
 }
@@ -90,43 +189,6 @@ unset($zz['fields'][14]);
 // parameters
 unset($zz['fields'][15]);
 
-$zz['fields'][76] = zzform_include_table('contacts-contacts');
-$zz['fields'][76]['title'] = 'Spielorte';
-$zz['fields'][76]['type'] = 'subtable';
-$zz['fields'][76]['min_records'] = 1;
-$zz['fields'][76]['max_records'] = 20;
-$zz['fields'][76]['type'] = 'subtable';
-$zz['fields'][76]['form_display'] = 'lines';
-$zz['fields'][76]['fields'][2]['type'] = 'foreign_key';
-$zz['fields'][76]['fields'][2]['key_field_name'] = 'contact_id';
-$zz['fields'][76]['fields'][3]['suffix'] = '<br>';
-$zz['fields'][76]['fields'][4]['type'] = 'hidden';
-$zz['fields'][76]['fields'][4]['type_detail'] = 'select';
-$zz['fields'][76]['fields'][4]['value'] = wrap_category_id('beziehungen/spielort');
-$zz['fields'][76]['fields'][4]['hide_in_form'] = true;
-$zz['fields'][76]['fields'][4]['def_val_ignore'] = true;
-$zz['fields'][76]['fields'][9]['prefix'] = '<span style="width: 2.4em; display: inline-block;"> </span> ';
-$zz['fields'][76]['fields'][6]['prefix'] = '<span style="width: 2.4em; display: inline-block;">';
-$zz['fields'][76]['fields'][6]['suffix'] = '</span>';
-$zz['fields'][76]['subselect']['sql'] = 'SELECT contacts_contacts.main_contact_id, postcode, place
-		, places.contact_id, places.contact
-	FROM contacts_contacts
-	LEFT JOIN contacts places
-		ON contacts_contacts.contact_id = places.contact_id
-	LEFT JOIN addresses
-		ON addresses.contact_id = places.contact_id
-	WHERE contacts_contacts.published = "yes"
-	ORDER BY sequence, postcode, place, contact
-';
-$zz['fields'][76]['subselect']['field_prefix'][2] = ' / <a href="/intern/orte/?edit=';
-$zz['fields'][76]['subselect']['field_suffix'][2] = '">';
-$zz['fields'][76]['subselect']['field_suffix'][3] = '</a>';
-$zz['fields'][76]['hide_in_list'] = false;
-$zz['fields'][76]['sql'] .= 'ORDER BY sequence, postcode, place, contact';
-$zz['fields'][76]['foreign_key_field_name'] = 'contacts_contacts.main_contact_id';
-$zz['fields'][76]['field_sequence'] = 38;
-$zz['fields'][76]['list_append_next'] = true;
-
 // address
 $zz['fields'][77] = $zz['fields'][5];
 unset($zz['fields'][5]);
@@ -136,6 +198,7 @@ $zz['fields'][77]['fields'][9]['value'] = wrap_category_id('adressen/dienstlich'
 $zz['fields'][77]['fields'][9]['hide_in_form'] = true;
 $zz['fields'][77]['field_sequence'] = 37;
 $zz['fields'][77]['list_append_next'] = false;
+$zz['fields'][77]['subselect']['concat_fields'] = '';
 
 $zz['fields'][74]['title'] = 'Mutterorganisation';
 $zz['fields'][74]['field_name'] = 'mother_contact_id';
@@ -172,7 +235,7 @@ $zz['fields'][75]['fields'][4]['sql'] = wrap_edit_sql(
 	$zz['fields'][75]['fields'][4]['sql'],
 	'WHERE', 'parameters LIKE "%&organisation=1%"'
 );
-$zz['fields'][75]['hide_in_list'] = true;
+$zz['fields'][75]['hide_in_list_if_empty'] = true;
 $zz['fields'][75]['field_sequence'] = 42;
 
 $zz['fields'][73]['field_name'] = 'ZPS';
@@ -181,22 +244,12 @@ $zz['fields'][73]['display_field'] = 'zps_code';
 $zz['fields'][73]['hide_in_form'] = true;
 $zz['fields'][73]['search'] = 'contacts_identifiers.identifier';
 
-$zz['fields'][72]['title'] = 'Nachfolgerin';
-$zz['fields'][72]['field_name'] = 'successor_contact_id';
-$zz['fields'][72]['type'] = 'select';
-$zz['fields'][72]['sql'] = 'SELECT contacts.contact_id, contact
-		, contacts_identifiers.identifier AS zps_code, mother_contact_id
-	FROM contacts
-	LEFT JOIN contacts_identifiers
-		ON contacts_identifiers.contact_id = contacts.contact_id
-		AND contacts_identifiers.current = "yes"
-	ORDER BY contacts_identifiers.identifier, contact_abbr';
-// @todo eigene ID nicht anzeigen
-$zz['fields'][72]['show_hierarchy'] = 'mother_contact_id';
-$zz['fields'][72]['show_hierarchy_same_table'] = true;
-$zz['fields'][72]['hide_in_list'] = true;
-$zz['fields'][72]['field_sequence'] = 72;
-$zz['fields'][72]['id_field_name'] = 'contacts.contact_id';
+$zz['fields'][97]['field_sequence'] = 97;
+$zz['fields'][97]['export'] = false;
+
+$zz['fields'][99]['field_sequence'] = 99;
+$zz['fields'][99]['export'] = false;
+
 
 $zz['sql'] = 'SELECT contacts.*
 		, mutter_orgs.contact_short AS mutter_org
