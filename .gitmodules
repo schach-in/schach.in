@@ -46,3 +46,6 @@
 [submodule "_inc/modules/ratings"]
 	path = _inc/modules/ratings
 	url = git@github.com:koenige/modules-ratings
+[submodule "_inc/themes/chess16"]
+	path = _inc/themes/chess16
+	url = git@github.com:schach-in/themes-chess16
