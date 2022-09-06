@@ -1,0 +1,17 @@
+# schach.in
+# URLs or parts of URLs for which errors shall not be logged
+# Local addendum
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/projects/zzwrap
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2022 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+# 
+# begin = check if begin of string is identical; end = check end; all: check full
+# errorcode	begin|end|all	string
+
+
+# spammers who try to access feedback form
+404	all	/kontakt/deutschland
