@@ -15,3 +15,6 @@
 
 # spammers who try to access feedback form
 404	all	/kontakt/deutschland
+
+# JS misinterpretation
+404	all	/'%20+%20feature.properties.identifier%20+%20'/
