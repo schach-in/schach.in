@@ -1,9 +1,6 @@
 [submodule "_inc/library/zzwrap"]
 	path = _inc/library/zzwrap
 	url = git@github.com:koenige/zzwrap
-[submodule "_inc/library/zzbrick"]
-	path = _inc/library/zzbrick
-	url = git@github.com:koenige/zzbrick
 [submodule "_inc/modules/default"]
 	path = _inc/modules/default
 	url = git@github.com:koenige/modules-default
