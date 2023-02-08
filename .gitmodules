@@ -6,7 +6,7 @@
 	url = git@github.com:koenige/modules-default
 [submodule "_inc/modules/clubs"]
 	path = _inc/modules/clubs
-	url = git@github.com:koenige/modules-clubs
+	url = git@github.com:schach-in/modules-clubs
 [submodule "_inc/modules/contacts"]
 	path = _inc/modules/contacts
 	url = git@github.com:koenige/modules-contacts
@@ -18,7 +18,7 @@
 	url = git@github.com:koenige/zzform
 [submodule "_inc/themes/schachin"]
 	path = _inc/themes/schachin
-	url = git@github.com:koenige/themes-schachin
+	url = git@github.com:schach-in/themes-schachin
 [submodule "www/_behaviour/leaflet-markercluster"]
 	path = www/_behaviour/leaflet-markercluster
 	url = git@github.com:Leaflet/Leaflet.markercluster
@@ -42,7 +42,7 @@
 	url = git@github.com:PHPMailer/PHPMailer
 [submodule "_inc/modules/ratings"]
 	path = _inc/modules/ratings
-	url = git@github.com:koenige/modules-ratings
+	url = git@github.com:schach-in/modules-ratings
 [submodule "_inc/themes/chess16"]
 	path = _inc/themes/chess16
 	url = git@github.com:schach-in/themes-chess16
