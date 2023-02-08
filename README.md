@@ -1,6 +1,6 @@
 # Website schach.in
 
-schach.in is a website that displays chess clubs, clubs with chess sections,
+[schach.in](https://schach.in/) is a website that displays chess clubs, clubs with chess sections,
 schools with chess societies and kindergartens with chess training on a map of
 Germany.
 
