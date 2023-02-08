@@ -12,6 +12,7 @@ Germany.
 * CMS Modules
   * default module, <https://github.com/koenige/modules-default>
   * clubs module, <https://github.com/schach-in/modules-clubs>
+  * ratings module, <https://github.com/schach-in/modules-ratings>
   * contacts module, <https://github.com/koenige/modules-contacts>
   * feedback module, <https://github.com/koenige/modules-feedback>
   * zzform module, <https://github.com/koenige/zzform>
