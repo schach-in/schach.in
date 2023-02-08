@@ -11,12 +11,12 @@ Germany.
   * zzbrick (Templating System), <https://github.com/koenige/zzbrick>
 * CMS Modules
   * default module, <https://github.com/koenige/modules-default>
-  * clubs module, <https://github.com/koenige/modules-clubs>
+  * clubs module, <https://github.com/schach-in/modules-clubs>
   * contacts module, <https://github.com/koenige/modules-contacts>
   * feedback module, <https://github.com/koenige/modules-feedback>
   * zzform module, <https://github.com/koenige/zzform>
 * CMS Themes
-  * schachin Theme, <https://github.com/koenige/themes-schachin>
+  * schachin Theme, <https://github.com/schach-in/themes-schachin>
 * Markdown
   * PHP Markdown, <https://github.com/michelf/php-markdown>
   * Pagedown Markdown editor and converter, <https://github.com/StackExchange/pagedown>
