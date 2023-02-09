@@ -16,6 +16,6 @@ _temp/*
 
 # config files
 _inc/config.json
-_inc/custom/zzwrap_sql/pwd.json
+pwd.json
 
 docs/screenshots/*
