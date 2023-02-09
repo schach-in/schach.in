@@ -7,11 +7,12 @@ _backup/*
 !_backup/README.md
 _cache/*
 !_cache/README.md
-_logs/
+_logs/*
 !_logs/README.md
 _temp/sessions/*
 !_temp/sessions/README.md
 _temp/*
+!_temp/README.md
 
 # config files
 _inc/config.json
