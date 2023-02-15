@@ -4,7 +4,17 @@
 schools with chess societies and kindergartens with chess training on a map of
 Germany.
 
-## Dependencies
+## Installation
+
+### System Requirements
+
+* PHP: 7.2, 8.0, or newer
+  * Enable required Apache modules: `sudo a2enmod headers`
+* MySQL: 5.7, 8.0, or newer
+
+### Dependencies
+
+The following dependencies are defined in the form of Git submodules. They are installed automatically by calling `git clone --recursive git@github.com:schach-in/schach.in.git`:
 
 * CMS: Zugzwang Project, <https://www.zugzwang.org>
   * zzwrap (Core CMS Library), <https://github.com/koenige/zzwrap>
