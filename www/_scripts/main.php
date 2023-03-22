@@ -14,5 +14,5 @@ $zz_conf['root'] = $_SERVER['DOCUMENT_ROOT'];
 $zz_setting['cms_dir'] = realpath($zz_conf['root'].'/..');
 
 // CMS will be started
-require_once $zz_setting['cms_dir'].'/_inc/library/zzwrap/zzwrap/zzwrap.php';
+require_once $zz_setting['cms_dir'].'/_inc/modules/zzwrap/zzwrap/zzwrap.php';
 zzwrap();

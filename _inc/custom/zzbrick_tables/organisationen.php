@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/projects/schach.in
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2006-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2006-2021, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -24,7 +24,7 @@ $zz['title'] = 'Organisationen';
 $zz['fields'][2]['title'] = 'Name';
 $zz['fields'][2]['type'] = 'text';
 $zz['fields'][2]['link'] = [
-	'string1' => 'https://schach.in'.($zz_setting['local_access'] ? '.local' : '').'/',
+	'string1' => 'https://schach.in'.(wrap_setting('local_access') ? '.local' : '').'/',
 	'field1' => 'identifier',
 	'string2' => '/'
 ];
