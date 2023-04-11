@@ -10,24 +10,25 @@ Germany.
 
 * PHP: 7.2, 8.0, or newer
   * Enable required Apache modules: `sudo a2enmod headers`
+  * Install required PHP extensions: `php-mbstring`, `php-zip`, `php-gd`, `php-curl`, `php-libxml`, `php-mysqli`, `php-exif`, `php-iconv`
 * MySQL: 5.7, 8.0, or newer
 
 ### Dependencies
 
 The following dependencies are defined in the form of Git submodules. They are installed automatically by calling `git clone --recursive git@github.com:schach-in/schach.in.git`:
 
-* CMS: Zugzwang Project, <https://www.zugzwang.org>
-  * zzwrap (Core CMS Library), <https://github.com/koenige/zzwrap>
-  * zzbrick (Templating System), <https://github.com/koenige/zzbrick>
-* CMS Modules
+* CMS: Zugzwang Project, <https://www.zugzwang.org> with the following modules:
   * default module, <https://github.com/koenige/modules-default>
   * clubs module, <https://github.com/schach-in/modules-clubs>
   * ratings module, <https://github.com/schach-in/modules-ratings>
   * contacts module, <https://github.com/koenige/modules-contacts>
   * feedback module, <https://github.com/koenige/modules-feedback>
   * zzform module, <https://github.com/koenige/zzform>
+  * zzwrap (Core CMS Library), <https://github.com/koenige/zzwrap>
+  * zzbrick (Templating System), <https://github.com/koenige/zzbrick>
 * CMS Themes
   * schachin Theme, <https://github.com/schach-in/themes-schachin>
+  * chess16 Theme, <https://github.com/schach-in/themes-chess16>
 * Markdown
   * PHP Markdown, <https://github.com/michelf/php-markdown>
   * Pagedown Markdown editor and converter, <https://github.com/StackExchange/pagedown>
