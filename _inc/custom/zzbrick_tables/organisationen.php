@@ -16,7 +16,7 @@
 if (!isset($values['relations']))
 	$values['relations_restrict_to'] = 'organisations';
 $values['contactdetails_restrict_to'] = 'organisations';
-$zz = zzform_include_table('contacts/contacts', $values);
+$zz = zzform_include('contacts/contacts', $values);
 
 $zz['title'] = 'Organisationen';
 
@@ -42,8 +42,6 @@ $zz['fields'][11]['hide_in_list'] = true;
 $zz['fields'][11]['field_sequence'] = 32.5;
 
 $zz['fields'][3]['title'] = 'Kennung (DSJ)';
-$zz['fields'][3]['conf_identifier']['concat'] = '-';
-$zz['fields'][3]['conf_identifier']['remove_strings'] = [' e.V.', ' e. V.', ' e. V.', ' eV.', ' eV'];
 $zz['fields'][3]['field_sequence'] = 44;
 
 // contact_category_id
@@ -226,7 +224,7 @@ $zz['fields'][74]['separator'] = true;
 $zz['fields'][74]['field_sequence'] = 40;
 
 // Verein
-$zz['fields'][75] = zzform_include_table('contacts-identifiers');
+$zz['fields'][75] = zzform_include('contacts-identifiers');
 $zz['fields'][75]['title'] = 'Kennungen';
 $zz['fields'][75]['type'] = 'subtable';
 $zz['fields'][75]['form_display'] = 'lines';
