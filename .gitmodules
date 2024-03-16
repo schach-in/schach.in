@@ -49,3 +49,6 @@
 [submodule "_inc/modules/zzwrap"]
 	path = _inc/modules/zzwrap
 	url = git@github.com:koenige/zzwrap
+[submodule "_inc/modules/leaflet"]
+	path = _inc/modules/leaflet
+	url = git@github.com:koenige/modules-leaflet
