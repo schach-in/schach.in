@@ -11,4 +11,4 @@
 - /_temp/*
 - /docs/*
 - /_inc/config.inc.php
-- /_inc/config.json
+- /_inc/config/
