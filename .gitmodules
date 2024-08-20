@@ -49,3 +49,6 @@
 [submodule "_inc/modules/leaflet"]
 	path = _inc/modules/leaflet
 	url = git@github.com:koenige/modules-leaflet
+[submodule "www/_behaviour/leaflet"]
+	path = www/_behaviour/leaflet
+	url = git@github.com:koenige/leaflet
