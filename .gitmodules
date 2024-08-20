@@ -19,9 +19,6 @@
 [submodule "www/_behaviour/leaflet-markercluster"]
 	path = www/_behaviour/leaflet-markercluster
 	url = git@github.com:Leaflet/Leaflet.markercluster
-[submodule "www/_behaviour/leaflet"]
-	path = www/_behaviour/leaflet
-	url = git@github.com:Leaflet/Leaflet
 [submodule "www/_behaviour/leaflet.fullscreen"]
 	path = www/_behaviour/leaflet.fullscreen
 	url = git@github.com:brunob/leaflet.fullscreen
