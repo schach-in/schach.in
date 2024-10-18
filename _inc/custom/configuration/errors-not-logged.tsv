@@ -20,3 +20,6 @@
 # JS misinterpretation
 404	all	/'%20+%20feature.properties.identifier%20+%20'/
 404	all	/"%20+%20feature.properties.identifier%20+%20"/
+
+# some company in India
+404	referer	http://mcgroups.in/admin?litespeed-crawler
