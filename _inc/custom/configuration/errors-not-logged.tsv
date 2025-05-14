@@ -6,7 +6,7 @@
 # http://www.zugzwang.org/projects/zzwrap
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2022-2023 Gustaf Mossakowski
+# @copyright Copyright © 2022-2023, 2025 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 # 
 # begin = check if begin of string is identical; end = check end; all: check full
@@ -23,3 +23,6 @@
 
 # some company in India
 404	referer	http://mcgroups.in/admin?litespeed-crawler
+
+# Trying to access Leaflet sources, via .map files, but why?
+404	begin	/_behaviour/src/
