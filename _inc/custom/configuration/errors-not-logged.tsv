@@ -26,3 +26,21 @@
 
 # Trying to access Leaflet sources, via .map files, but why?
 404	begin	/_behaviour/src/
+
+# Broken script
+404	all	/?q={search_term_string}
+404	all	/_layout/clubs/leaflet/
+404	all	/marker-icon-red.png
+404	all	/marker-icon-red-2x.png
+404	all	/marker-star-red.png
+404	all	/marker-star-red-2x.png
+404	all	/marker-icon.png
+404	all	/marker-icon-2x.png
+404	all	/marker-star-blue.png
+404	all	/marker-star-blue-2x.png
+404	all	/marker-icon-gold.png
+404	all	/marker-icon-gold-2x.png
+404	all	/marker-star-gold.png
+404	all	/marker-star-gold-2x.png
+404	all	/marker-icon-orange.png
+404	all	/marker-icon-orange-2x.png
