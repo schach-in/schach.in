@@ -10,7 +10,7 @@ Germany.
 
 * PHP: 7.2, 8.0, or newer
   * Enable required Apache modules: `sudo a2enmod headers`
-  * Install required PHP extensions: `php-mbstring`, `php-zip`, `php-gd`, `php-curl`, `php-libxml`, `php-mysqli`, `php-exif`, `php-iconv`
+  * Install required PHP extensions: `php-mbstring`, `php-zip`, `php-gd`, `php-curl`, `php-libxml`, `php-mysqli`, `php-exif`, `php-iconv`, `php-imap`, `php-xml`
 * MySQL: 5.7, 8.0, or newer
 
 ### Dependencies
